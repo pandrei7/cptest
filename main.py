@@ -97,6 +97,8 @@ def run_source(language, input_path, output_path):
       subprocess.run(['./main'], stdin = fin, stdout = fout, timeout = 5000)
     elif language == 'python':
       subprocess.run(['python3.6', 'main.py'], stdin = fin, stdout = fout, timeout = 5000)
+    elif language == 'java':
+      subprocess.run(['java', 'Main'], stdin = fin, stdout = fout, timeout = 5000)
     else:
       raise RuntimeError('Source language not supported')
 
