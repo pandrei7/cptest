@@ -93,7 +93,7 @@ def fill_tests(contest_id, letter):
 
 def run_source(language, input_path, output_path):
   with open(input_path) as fin, open(output_path, 'w') as fout:
-    if language == 'c' or language == 'c++':
+    if language in ['c', 'c++']:
       subprocess.run(['./main'], stdin = fin, stdout = fout, timeout = 5000)
     elif language == 'python':
       subprocess.run(['python3.6', 'main.py'], stdin = fin, stdout = fout, timeout = 5000)
