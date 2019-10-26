@@ -5,11 +5,11 @@ from .test_data import TestData
 
 class ForceWriter:
   def write_tests(self, tests, dest):
+    self.create_and_clear(dest)
     for (i, test) in enumerate(tests):
       input_path = os.path.join(dest, f'{i}.in')
       output_path = os.path.join(dest, f'{i}.out')
 
-      self.create_and_clear(dest)
       with open(input_path, 'w') as fout:
         fout.write(test.input_data + '\n\0')
       with open(output_path, 'w') as fout:
