@@ -20,4 +20,4 @@ def get_loader(site_id):
                           CodeforcesParser(),
                           ForceWriter())
 
-  raise RuntimeError('Website not supported')
+  raise RuntimeError(f'Website not supported: "{site_id}"')

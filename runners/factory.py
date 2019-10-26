@@ -18,4 +18,4 @@ def get_runner(lang_id):
   if lang_id in PYTHON_LANG_IDS:
     return PythonRunner()
 
-  raise RuntimeError('Source language not supported')
+  raise RuntimeError(f'Source language not supported: "{lang_id}"')
