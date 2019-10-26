@@ -47,7 +47,7 @@ class CodeforcesParser(HTMLParser):
         self.in_output = False
         self.add_current_test()
 
-  def get_tests(self, html_data):
+  def get_tests(self, html):
     self.tests.clear()
-    self.feed(html_data)
+    self.feed(html)
     return self.tests
