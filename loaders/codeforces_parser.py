@@ -13,8 +13,9 @@ class CodeforcesParser(HTMLParser):
     self.tests = []
 
   def add_current_test(self):
-    input_data = self.curr_input.strip()
-    output_data = self.curr_output.strip()
+    # Codeforces tests start with a newline. Remove it.
+    input_data = self.curr_input[1:]
+    output_data = self.curr_output[1:]
     curr_test = TestData(input_data, output_data)
 
     self.tests.append(curr_test)
