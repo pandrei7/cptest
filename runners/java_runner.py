@@ -6,3 +6,6 @@ class JavaRunner:
                           stdin=in_file,
                           stdout=out_file,
                           timeout=timeout)
+
+  def get_default_source(self):
+    return 'Main'
