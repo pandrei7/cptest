@@ -11,9 +11,9 @@ class ForceWriter:
       output_path = os.path.join(dest, f'{i}.out')
 
       with open(input_path, 'w') as fout:
-        fout.write(test.input_data + '\n\0')
+        fout.write(test.input_data + '\n')
       with open(output_path, 'w') as fout:
-        fout.write(test.output_data)
+        fout.write(test.output_data + '\n')
 
   def create_and_clear(self, dest):
     os.makedirs(dest, exist_ok=True)
