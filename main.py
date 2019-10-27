@@ -14,7 +14,7 @@ def load(args):
 
 def run(args):
   runner = runners.get_runner(args.lang_id)
-  tester = testers.StrictTester(runner, TIMEOUT)
+  tester = testers.ReasonableTester(runner, TIMEOUT)
 
   # If no explicit source was specified, use a default one.
   if not args.source:
