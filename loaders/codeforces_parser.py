@@ -13,9 +13,9 @@ class CodeforcesParser(HTMLParser):
     self.tests = []
 
   def add_current_test(self):
-    # Codeforces tests start with a newline. Remove it.
-    input_data = self.curr_input[1:]
-    output_data = self.curr_output[1:]
+    # Newer Codeforces tests start with a newline. Remove it if it exists.
+    input_data = self.curr_input[self.curr_input.find('\n', 0, 1) + 1:]
+    output_data = self.curr_output[self.curr_output.find('\n', 0, 1) + 1:]
     curr_test = TestData(input_data, output_data)
 
     self.tests.append(curr_test)
@@ -50,5 +50,10 @@ class CodeforcesParser(HTMLParser):
 
   def get_tests(self, html):
     self.tests.clear()
-    self.feed(html)
+    self.feed(self.clean_html(html))
     return self.tests
+
+  def clean_html(self, html):
+    return (html.replace('<br />', '\n')
+                .replace('<br/>', '\n')
+                .replace('<br>', '\n'))
