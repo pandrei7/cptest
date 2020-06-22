@@ -7,7 +7,7 @@ from .rust_runner import RustRunner
 C_LANG_IDS = ['c']
 CC_LANG_IDS = ['cc', 'c++', 'cpp']
 JAVA_LANG_IDS = ['java']
-PYTHON_LANG_IDS = ['python']
+PYTHON_LANG_IDS = ['python', 'py']
 RUST_LANG_IDS = ['rust', 'rs']
 
 def get_runner(lang_id):
