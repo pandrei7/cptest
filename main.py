@@ -1,4 +1,6 @@
 import argparse
+import os
+import shutil
 
 import loaders
 import runners
@@ -23,6 +25,17 @@ def run(args):
   tester.test_all(args.source, TESTS_DIR)
 
 
+def clean(args):
+  try:
+    if os.path.exists(TESTS_DIR):
+      shutil.rmtree(TESTS_DIR)
+    if os.path.exists(TESTS_OUT):
+      os.remove(TESTS_OUT)
+    print('The directory is clean.')
+  except OSError as e:
+    print(f'Error: {e.filename} - {e.strerror}')
+
+
 def main():
   parser = argparse.ArgumentParser()
   subparsers = parser.add_subparsers()
@@ -42,6 +55,10 @@ def main():
                                '(language-specific defaults are available)',
                           nargs='?', default=None)
   parser_run.set_defaults(func=run)
+
+  # Parser for the 'clean' command.
+  parser_clean = subparsers.add_parser('clean', help='remove cptest files')
+  parser_clean.set_defaults(func=clean)
 
   # If no command is chosen, print the help message.
   # This might change once Python 3.7 is supported.
