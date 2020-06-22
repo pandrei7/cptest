@@ -4,7 +4,7 @@ import subprocess
 from abc import ABC, abstractmethod
 
 class TesterBase:
-  def __init__(self, runner, timeout=10, output_path='.cp_output'):
+  def __init__(self, runner, timeout, output_path):
     self.runner = runner
     self.timeout = timeout
     self.output_path = output_path

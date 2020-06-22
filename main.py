@@ -5,6 +5,7 @@ import runners
 import testers
 
 TESTS_DIR = 'cp-tests'
+TESTS_OUT = '.cp_output'
 TIMEOUT = 10
 
 def load(args):
@@ -14,7 +15,7 @@ def load(args):
 
 def run(args):
   runner = runners.get_runner(args.lang_id)
-  tester = testers.ReasonableTester(runner, TIMEOUT)
+  tester = testers.ReasonableTester(runner, TIMEOUT, TESTS_OUT)
 
   # If no explicit source was specified, use a default one.
   if not args.source:
