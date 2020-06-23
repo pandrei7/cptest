@@ -1,6 +1,7 @@
 import argparse
 import os
 import shutil
+import subprocess
 
 import loaders
 import runners
@@ -36,6 +37,18 @@ def clean(args):
     print(f'Error: {e.filename} - {e.strerror}')
 
 
+def update(args):
+  main_dir = os.path.dirname(os.path.realpath(__file__))
+  print(f'Pulling the latest version to {main_dir}')
+
+  os.chdir(main_dir)
+  subprocess.run(['git', 'pull'])
+
+
+def version(args):
+  print('v1.1')
+
+
 def main():
   parser = argparse.ArgumentParser()
   subparsers = parser.add_subparsers()
@@ -59,6 +72,15 @@ def main():
   # Parser for the 'clean' command.
   parser_clean = subparsers.add_parser('clean', help='remove cptest files')
   parser_clean.set_defaults(func=clean)
+
+  # Parser for the 'update' command.
+  parser_update = subparsers.add_parser('update', help='get the latest version')
+  parser_update.set_defaults(func=update)
+
+  # Parser for the 'version' command.
+  parser_version = subparsers.add_parser('version',
+                                         help='print the current version')
+  parser_version.set_defaults(func=version)
 
   # If no command is chosen, print the help message.
   # This might change once Python 3.7 is supported.
