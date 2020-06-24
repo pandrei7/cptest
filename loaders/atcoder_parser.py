@@ -3,6 +3,8 @@ from html.parser import HTMLParser
 from .test_data import TestData
 
 class AtcoderParser(HTMLParser):
+  """A class which can parse AtCoder webpages for testcase data."""
+
   def __init__(self):
     HTMLParser.__init__(self)
     self.in_input = False
@@ -47,6 +49,7 @@ class AtcoderParser(HTMLParser):
         self.add_current_test()
 
   def get_tests(self, html):
+    """Parses the given HTML code and returns a list of testcases."""
     self.tests.clear()
     self.feed(html)
     return self.tests

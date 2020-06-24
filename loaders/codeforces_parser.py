@@ -3,6 +3,8 @@ from html.parser import HTMLParser
 from .test_data import TestData
 
 class CodeforcesParser(HTMLParser):
+  """A class which can parse Codeforces webpages for testcase data."""
+
   def __init__(self):
     HTMLParser.__init__(self)
     self.in_input = False
@@ -49,11 +51,13 @@ class CodeforcesParser(HTMLParser):
         self.add_current_test()
 
   def get_tests(self, html):
+    """Parses the given HTML code and returns a list of testcases."""
     self.tests.clear()
     self.feed(self.clean_html(html))
     return self.tests
 
   def clean_html(self, html):
+    """Prepares HTML code to be parsed."""
     return (html.replace('<br />', '\n')
                 .replace('<br/>', '\n')
                 .replace('<br>', '\n'))

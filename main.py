@@ -7,16 +7,21 @@ import loaders
 import runners
 import testers
 
+# The name of the directory which will hold the test data
 TESTS_DIR = 'cp-tests'
+# The name of the file used to store the user's output
 TESTS_OUT = '.cp_output'
+# The time limit for each test run
 TIMEOUT = 10
 
 def load(args):
+  """Downloads the testcases of the given problem."""
   loader = loaders.get_loader(args.site_id)
   loader.load_tests(args.contest_id, args.problem_id, TESTS_DIR)
 
 
 def run(args):
+  """Tests the user's source and prints the results."""
   runner = runners.get_runner(args.lang_id)
   tester = testers.ReasonableTester(runner, TIMEOUT, TESTS_OUT)
 
@@ -27,6 +32,7 @@ def run(args):
 
 
 def clean(args):
+  """Removes all files used for testing from the current directory."""
   try:
     if os.path.exists(TESTS_DIR):
       shutil.rmtree(TESTS_DIR)
@@ -38,6 +44,8 @@ def clean(args):
 
 
 def update(args):
+  """Updates the program to the latest version."""
+  # Updating is done by pulling the latest changes from the repo.
   main_dir = os.path.dirname(os.path.realpath(__file__))
   print(f'Pulling the latest version to {main_dir}')
 
@@ -46,6 +54,7 @@ def update(args):
 
 
 def version(args):
+  """Prints the current version of the program."""
   print('v1.1')
 
 
