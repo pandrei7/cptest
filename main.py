@@ -55,7 +55,7 @@ def update(args):
 
 def version(args):
   """Prints the current version of the program."""
-  print('v1.1')
+  print('v1.2')
 
 
 def main():
