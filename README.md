@@ -1,6 +1,21 @@
 # cptest
 
-A tool for testing competitive programming solutions easily.
+This tool lets you check your competitive programming solutions easily,
+by downloading example test cases locally and running your source against them.
+
+Popular competitive programming websites are supported, such as Codeforces
+and AtCoder.
+
+If you wish, you can add custom tests manually, by following the convention
+of the existing tests. These will also be run automatically.
+
+The program checks your solution by comparing your output to the correct one.
+This means that it is most useful for problems with a "fixed" output, because
+it cannot detect if multiple correct answers exist. Interactive problems also
+cannot be checked correctly.
+
+![Codeforces testcases](img/cf_tests.png "Codeforces testcases")
+![Usage for the problem](img/cf_tested.png "Usage for the problem")
 
 ## Table of Contents
 * [Installation](#installation)
@@ -28,7 +43,7 @@ commands.
 
 For example, using the program for a Codeforces problem will look like this:
 
-![Codeforces demo](img/cf_demo.gif)
+![Codeforces demo](img/cf_demo.gif "Demo run for a Codeforces problem")
 
 Below is a more detailed description of the available commands.
 
