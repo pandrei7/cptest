@@ -3,9 +3,9 @@ import os
 import shutil
 import subprocess
 
-import loaders
-import runners
-import testers
+from . import loaders
+from . import runners
+from . import testers
 
 # The name of the directory which will hold the test data
 TESTS_DIR = 'cp-tests'

@@ -21,11 +21,12 @@ cannot be checked correctly.
 * [Installation](#installation)
 * [Usage](#usage)
 * [Updating](#updating)
-* [Uninstallation](#uninstallation) 
+* [Uninstallation](#uninstallation)
 
 ## Installation
 To install the program, you'll need Python 3 and pip.
-All you need to do is clone this repo and install with pip:
+All you need to do is clone this repo and install with pip (make sure you're
+using a recent-enough version of setuptools):
 ```bash
 git clone https://github.com/pandrei7/cptest [YOUR_CHOICE_DIR]
 pip install -e [YOUR_CHOICE_DIR]
