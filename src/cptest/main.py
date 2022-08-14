@@ -55,7 +55,8 @@ def update(args):
 
 def version(args):
   """Prints the current version of the program."""
-  print('v1.2')
+  from cptest import __version__
+  print(__version__)
 
 
 def main():
