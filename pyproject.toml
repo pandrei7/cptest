@@ -30,4 +30,5 @@ version = { attr = "cptest.__version__" }
 minversion = "6.0"
 addopts = "-ra"
 console_output_style = "count"
+pythonpath = "src"
 testpaths = ["tests"]
