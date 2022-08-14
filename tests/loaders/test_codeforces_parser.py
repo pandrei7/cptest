@@ -24,6 +24,13 @@ class TestCodeforcesParser:
     assert testcases == correct_testcases, \
       'Problems similar to CF 1300E should be parsed correctly'
 
+  def test_1696d(self):
+    html = self.read_html('cf_1696_d.html')
+    correct_testcases = self.read_testcases('cf_1696_d.json')
+    testcases = self.parser.get_tests(html)
+    assert testcases == correct_testcases, \
+      'Problems similar to CF 1696d should be parsed correctly'
+
   def read_html(self, filename: str) -> str:
     path = os.path.join(self.file_prefix, 'data', filename)
     with open(path) as fin:
