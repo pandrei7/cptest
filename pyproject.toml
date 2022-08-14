@@ -22,3 +22,9 @@ classifiers = [
 
 [project.scripts]
 cptest = "cptest.main:main"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra"
+console_output_style = "count"
+testpaths = ["tests"]
