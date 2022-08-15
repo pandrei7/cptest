@@ -9,6 +9,7 @@ class CodeforcesParser(HTMLParser):
     HTMLParser.__init__(self)
     self.in_input = False
     self.in_output = False
+    self.in_example_line = False
     self.in_pre = False
     self.curr_input = ''
     self.curr_output = ''
@@ -31,13 +32,28 @@ class CodeforcesParser(HTMLParser):
     elif tag == 'div' and ('class', 'output') in attrs:
       self.in_output = True
       self.in_input = False
+    elif tag == 'div' and 'test-example-line' in self.tag_classes(attrs):
+      self.in_example_line = True
     elif tag == 'pre':
       self.in_pre = True
+
+  def tag_classes(self, attrs):
+    for key, val in attrs:
+      if key == 'class':
+        return val.split()
+    return []
 
   def handle_data(self, data):
     if self.in_pre:
       if self.in_input:
-        self.curr_input = data
+        # Newer tests format each line of the input separately if multiple
+        # tests cases are used. See https://codeforces.com/blog/entry/105779.
+        # In this case, concat all lines of the input, otherwise take the
+        # entire input is at once.
+        if self.in_example_line:
+          self.curr_input += f'{data}\n'
+        else:
+          self.curr_input = data
       elif self.in_output:
         self.curr_output = data
 
@@ -49,6 +65,9 @@ class CodeforcesParser(HTMLParser):
       elif self.in_output:
         self.in_output = False
         self.add_current_test()
+    elif tag == 'div':
+      if self.in_example_line:
+        self.in_example_line = False
 
   def get_tests(self, html):
     """Parses the given HTML code and returns a list of testcases."""

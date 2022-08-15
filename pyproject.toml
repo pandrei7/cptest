@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cptest"
+dynamic = ["version"]
+authors = [{ name = "Preda Andrei", email = "preda.andrei174@gmail.com" }]
+description = "A tool for testing competitive programming solutions quickly and easily"
+readme = "README.md"
+license = { file = "LICENSE.md" }
+requires-python = ">=3.6"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Unix",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pandrei7/cptest"
+"Issue Tracker" = "https://github.com/pandrei7/cptest/issues"
+
+[project.scripts]
+cptest = "cptest.main:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "cptest.__version__" }
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra"
+console_output_style = "count"
+pythonpath = "src"
+testpaths = ["tests"]

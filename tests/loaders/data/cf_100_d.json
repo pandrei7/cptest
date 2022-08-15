@@ -1,0 +1,10 @@
+[
+    {
+        "input_data": "100\nCodeforces\nMMIODPC\n",
+        "output_data": "Yes\n"
+    },
+    {
+        "input_data": "5\nMMIOD\nCF\n",
+        "output_data": "No\n"
+    }
+]
